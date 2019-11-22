@@ -16,9 +16,9 @@ export class AuthService {
 
   constructor(private http: HttpClient) {
     this.headers = new HttpHeaders();
-    this.headers.append("Content-Type", 'application/json');
-    this.headers.append("Access-Control-Allow-Origin", "*");
-    this.headers.append("Access-Control-Allow-Headers", "Origin, Authorization, Content-Type, Accept");
+    this.headers.append('Content-Type', 'application/json');
+    this.headers.append('Access-Control-Allow-Origin', '*');
+    this.headers.append('Access-Control-Allow-Headers', 'Origin, Authorization, Content-Type, Accept');
 
     // set token if saved in local storage
     var currentUser = JSON.parse(localStorage.getItem('user'));
@@ -26,7 +26,7 @@ export class AuthService {
   }
 
   login(email: string, password: string): Observable<any> {
-    return this.http.post(this.apiUrl + '/login', { email: email, password: password }, { headers: this.headers })
+    return this.http.post(`${this.apiUrl}/login`, { email: email, password: password }, { headers: this.headers })
       .pipe(
         map((response: Response) => {
           // login successful if there's a jwt token in the response
@@ -43,7 +43,7 @@ export class AuthService {
   }
 
   register(username: string, email: string, password: string): Observable<any> {
-    return this.http.post(this.apiUrl + '/register', {
+    return this.http.post(`${this.apiUrl}/register`, {
       email: email, name: username,
       password: password
     }, { headers: this.headers })
@@ -90,4 +90,5 @@ export class AuthService {
         })
       );
   }
+
 }
