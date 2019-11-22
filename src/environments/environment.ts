@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  baseUrl: window.location.origin, // Base URL here
+  apiUrl: 'http://tsm.test/api' //your local API URL here
 };
 
 /*
