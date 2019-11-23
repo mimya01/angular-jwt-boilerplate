@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   baseUrl: window.location.origin, // Base URL here
-  apiUrl: 'http://tsm.test/api' //your local API URL here
+  apiUrl: 'http://localhost:3000/api/' //your local API URL here
 };
 
 /*

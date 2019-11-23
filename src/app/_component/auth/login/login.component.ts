@@ -8,8 +8,8 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  private email: string = '';
-  private password: string = '';
+  private email  = '';
+  private password  = '';
   private warningMessage: string;
 
   constructor(private authService: AuthService, private router: Router) { }
@@ -20,16 +20,17 @@ export class LoginComponent implements OnInit {
   onLogIn() {
     this.authService.login(this.email, this.password)
       .subscribe(res => {
-        //check for errors
+        // check for errors
         this.warningMessage = '';
         if (Array.isArray(res)) {
           this.warningMessage += res[0];
         }
         // if not errors - navigate to home
-        if (!this.warningMessage)
-          this.router.navigate(['home']);
+        if (!this.warningMessage) {
+          this.router.navigate( ['home'] );
+        }
       }, error => {
-        this.warningMessage = "Invalid Credentials!";
+        this.warningMessage = 'Invalid Credentials!';
         console.error(error);
       });
   }

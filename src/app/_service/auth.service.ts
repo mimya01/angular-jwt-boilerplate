@@ -26,7 +26,7 @@ export class AuthService {
   }
 
   login(email: string, password: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/login`, { email: email, password: password }, { headers: this.headers })
+    return this.http.post(`${this.apiUrl}auth/login`, { email: email, password: password }, { headers: this.headers })
       .pipe(
         map((response: Response) => {
           // login successful if there's a jwt token in the response
